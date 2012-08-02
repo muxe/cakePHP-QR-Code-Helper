@@ -220,8 +220,8 @@ class QrCodeHelper extends AppHelper {
 				'last-mod', 'location', 'organizer', 'priority',
 				'dtstamp', 'seq', 'status', 'summary', 'transp',
 				'uid', 'recurid',
-      # either 'dtend' or 'duration' may appear in a 'eventprop',
-      # but 'dtend' and 'duration' MUST NOT occur in the same 'eventprop'
+			# either 'dtend' or 'duration' may appear in a 'eventprop',
+			# but 'dtend' and 'duration' MUST NOT occur in the same 'eventprop'
 				'dtend', 'duration',
 			#the following are optional, and MAY occur more than once
 				'attach', 'attendee', 'categories', 'comment',
