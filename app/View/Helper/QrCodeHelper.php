@@ -214,22 +214,29 @@ class QrCodeHelper extends AppHelper {
 	 * @param mixed $options options array, see helper vars for description of parameters
 	 */
 	function event($event = array(), $options = array()) {
+		$ValidProps = array(
+			#the following are optional, but MUST NOT occur more than once
+				'class', 'created', 'description', 'dtstart', 'geo',
+				'last-mod', 'location', 'organizer', 'priority',
+				'dtstamp', 'seq', 'status', 'summary', 'transp',
+				'uid', 'recurid',
+      # either 'dtend' or 'duration' may appear in a 'eventprop',
+      # but 'dtend' and 'duration' MUST NOT occur in the same 'eventprop'
+				'dtend', 'duration',
+			#the following are optional, and MAY occur more than once
+				'attach', 'attendee', 'categories', 'comment',
+				'contact', 'exdate', 'exrule', 'rstatus', 'related',
+				'resources', 'rdate', 'rrule', 'x-prop'
+		);
 		$ret = 'BEGIN:VEVENT';
-		if (isset($event['summary'])) {
-			$ret .= "\n".'SUMMARY:'.$event['summary'];
-		}
-		if (isset($event['start'])) {
-			$ret .= "\n".'DTSTART:'.$event['start'];
-		}
-		if (isset($event['end'])) {
-			$ret .= "\n".'DTEND:'.$event['end'];
-		}
-		if (isset($event['location'])) {
-			$ret .= "\n".'LOCATION:'.$event['location'];
-		}
-		if (isset($event['description'])) {
-			$ret .= "\n".'DESCRIPTION:'.$event['description'];
-		}
+		foreach ($options as $propCurrentName => $propCurrentValue) {
+			if ( isset($ValidProps[$propCurrentName]) ) {
+						if ($propCurrentName == 'url') {
+							$propCurrentValue=Router::url($propCurrentValue, true);
+						}
+						$ret .= "\n" . strtoupper($propCurrentName) . ':' . $propCurrentValue;
+				}
+			}
 		$ret .= "\n".'END:VEVENT';
 		return $this->Html->image($this->base_url . urlencode($ret) . $this->_optionsString($options));
 	}
