@@ -1,3 +1,9 @@
+!!!
+IMPORTANT: The Infographics portion of Google Chart Tools has been officially deprecated as of April 20, 2012. It will continue to work as per googles deprecation policy.
+http://googledevelopers.blogspot.de/2012/04/changes-to-deprecation-policies-and-api.html
+https://developers.google.com/chart/terms
+!!!
+
 Simple displaying of QR codes.
 See https://google-developers.appspot.com/chart/infographics/docs/qr_codes for more infos.
 
