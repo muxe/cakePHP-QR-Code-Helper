@@ -52,7 +52,7 @@ class QrCodeHelper extends AppHelper {
 	 *
 	 * @var string
 	 */
-	var $base_url = 'http://chart.apis.google.com/chart?cht=qr&chl=';
+	var $base_url = 'http://chart.googleapis.com/chart?cht=qr&chl=';
 
 	/**
 	 * Encode Text. You can use plaintext or encode Infos in whatever format you want.
